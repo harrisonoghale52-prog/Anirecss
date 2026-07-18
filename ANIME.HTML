@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AniRecs</title>
+  <link rel="stylesheet" href="ANIME.CSS">
+</head>
+<body>
+  <header>
+    <h1>AniRecs</h1>
+    <div class="header-actions">
+      <input type="text" id="search" placeholder="Search anime">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+    </div>
+    <nav aria-label="Genre navigation">
+      <div id="genre-buttons"></div>
+    </nav>
+  </header>
+  <main>
+    <div id="anime-container"></div>
+  </main>
+  <script>
+    if (localStorage.getItem('aniRecsLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

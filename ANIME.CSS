@@ -1,0 +1,222 @@
+:root {
+        --bg: #ffffff;
+        --text: #1a1a1a;
+        --header-bg: linear-gradient(135deg, #ff6b6b 0%, #f7d794 25%, #6a89cc 50%, #38ada9 75%, #e55039 100%);
+        --header-text: #ffffff;
+        --input-bg: #ffffff;
+        --input-text: #1a1a1a;
+        --input-shadow: rgba(0, 0, 0, 0.1);
+        --panel-bg: rgba(255, 255, 255, 0.12);
+        --panel-border: rgba(255, 255, 255, 0.18);
+        --button-bg: #f0f0f0;
+        --button-text: #333;
+        --button-border: #ddd;
+        --button-hover-bg: #e8e8e8;
+        --button-hover-border: #999;
+        --active-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --card-bg: #ececec;
+        --card-border: #d4d4d4;
+        --card-shadow: rgba(0, 0, 0, 0.08);
+        --rating-bg: rgba(102, 126, 234, 0.9);
+        --rating-text: #ffffff;
+      }
+      @keyframes headerGradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      [data-theme="dark"] {
+        --bg: #11131a;
+        --text: #f1f3f8;
+        --header-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 35%, #334155 70%, #0f172a 100%);
+        --header-text: #f8f8ff;
+        --input-bg: #1f2433;
+        --input-text: #f8f8ff;
+        --input-shadow: rgba(0, 0, 0, 0.4);
+        --panel-bg: rgba(255, 255, 255, 0.08);
+        --panel-border: rgba(255, 255, 255, 0.08);
+        --button-bg: #2a3145;
+        --button-text: #f8f8ff;
+        --button-border: #3a435c;
+        --button-hover-bg: #353f5b;
+        --button-hover-border: #5a6a9a;
+        --active-bg: linear-gradient(135deg, #4b6cc1 0%, #5b4995 100%);
+        --card-bg: #2e3239;
+        --card-border: #464d57;
+        --card-shadow: rgba(0, 0, 0, 0.35);
+        --rating-bg: rgba(80, 180, 120, 0.95);
+        --rating-text: #ffffff;
+      }
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+      header {
+        position: relative;
+        padding: 30px 20px;
+        text-align: center;
+        background: var(--header-bg);
+        background-size: 400% 400%;
+        animation: headerGradient 12s ease infinite;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
+        border-bottom: 4px solid rgba(255, 255, 255, 0.12);
+      }
+      header h1 {
+        margin: 0 0 15px 0;
+        color: var(--header-text);
+        font-size: 2.6em;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+      }
+      .header-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding: 8px 0 0;
+      }
+      header input {
+        padding: 13px 18px;
+        width: min(100%, 520px);
+        max-width: 520px;
+        border-radius: 999px;
+        border: 2px solid rgba(255, 255, 255, 0.28);
+        margin-top: 10px;
+        font-size: 16px;
+        box-shadow: 0 8px 22px var(--input-shadow);
+        background: linear-gradient(180deg, var(--input-bg), rgba(255, 255, 255, 0.96));
+        color: var(--input-text);
+        transition: box-shadow 0.3s ease, transform 0.2s ease, border-color 0.3s ease, background 0.3s ease;
+      }
+      header input::placeholder {
+        color: rgba(26, 26, 26, 0.55);
+      }
+      [data-theme="dark"] header input::placeholder {
+        color: rgba(248, 248, 255, 0.65);
+      }
+      header input:focus {
+        outline: none;
+        transform: translateY(-1px);
+        border-color: rgba(102, 126, 234, 0.75);
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.18), 0 8px 20px rgba(102, 126, 234, 0.24);
+      }
+      .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--header-text);
+        cursor: pointer;
+        font-size: 1.25rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s, transform 0.2s;
+      }
+      .theme-toggle:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.18);
+      }
+      header nav {
+        margin-top: 20px;
+        width: 100%;
+      }
+      #genre-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 10px;
+        background: var(--panel-bg);
+        border-radius: 999px;
+        border: 1px solid var(--panel-border);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+      .genre-button {
+        background: var(--button-bg);
+        color: var(--button-text);
+        border: 2px solid var(--button-border);
+        padding: 10px 18px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 500;
+      }
+      .genre-button:hover {
+        background: var(--button-hover-bg);
+        border-color: var(--button-hover-border);
+      }
+      .genre-button.active {
+        background: var(--active-bg);
+        color: white;
+        border-color: transparent;
+      }
+      #anime-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        padding: 30px;
+      }
+      @keyframes cardFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .anime-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s;
+        box-shadow: 0 2px 8px var(--card-shadow);
+        border: 1px solid var(--card-border);
+        position: relative;
+        animation: cardFadeIn 0.22s ease both;
+      }
+      .anime-card:hover {
+        transform: translateY(-8px) scale(1.01);
+        box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+      }
+      .anime-card img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+      }
+      .anime-card h3 {
+        padding: 15px;
+        margin: 0;
+        color: var(--text);
+        font-size: 16px;
+        line-height: 1.4;
+      }
+      .anime-card .rating {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: var(--rating-bg);
+        color: var(--rating-text);
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: bold;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
